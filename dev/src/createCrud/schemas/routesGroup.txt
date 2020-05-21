@@ -1,0 +1,8 @@
+
+    $app->group('/SMODELNAME', function (Group $group) {
+        $group->get('s', ListMODELNAMEsAction::class);
+        $group->post('', AddMODELNAMEAction::class);
+        $group->get('/{id}', GetMODELNAMEAction::class);
+        $group->put('/{id}', UpdateMODELNAMEAction::class);
+        $group->delete('/{id}', DeleteMODELNAMEAction::class);
+    });

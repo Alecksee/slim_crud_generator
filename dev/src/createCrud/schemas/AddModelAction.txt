@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\MODELNAME;
+
+use Psr\Http\Message\ResponseInterface as Response;
+use App\Domain\MODELNAME\MODELNAME;
+
+class AddMODELNAMEAction extends MODELNAMEAction
+{
+    protected function action(): Response
+    {
+        $data = $this->request->getParsedBody();
+        $SMODELNAME = new MODELNAME;
+        $SMODELNAME->name = $data["name"];
+        $SMODELNAME->save();
+        return $this->respondWithData($SMODELNAME);
+    }
+}

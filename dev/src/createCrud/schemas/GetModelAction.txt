@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\MODELNAME;
+
+use Psr\Http\Message\ResponseInterface as Response;
+
+class GetMODELNAMEAction extends MODELNAMEAction
+{
+    protected function action(): Response
+    {
+        $SMODELNAMEId = (int) $this->resolveArg('id');
+        $SMODELNAME = $this->SMODELNAME->find($SMODELNAMEId);
+        return $this->respondWithData($SMODELNAME);
+    }
+}
