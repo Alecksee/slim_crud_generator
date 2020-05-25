@@ -3,6 +3,7 @@ Create full CRUD API schema for SLIM with Eloquent
 
 # Init
 Copy dev folder into your Slim skeleton project.
+
 Adapt dev/dbsettings.php with your configuration.
 
 # How to use
