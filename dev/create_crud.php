@@ -8,7 +8,7 @@ require("src/functions/functions.php");
 $crudName;
 
 if (empty($argv[1]))
-    $crudName = getCrudName();
+    $crudName = getUserInput("Please enter a model name: ");
 else
     $crudName = $argv[1];
 
@@ -17,6 +17,6 @@ $crudName = plurialize($crudName);
 try {
     new CreateCrud($crudName);
 } catch ( Error $e ) {
-    echo $e->getMessage()."\n";
+    echo "\033[31m".$e->getMessage()."\033[0m\n";
 }
 

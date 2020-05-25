@@ -1,7 +1,7 @@
 <?php
 
-function getCrudName(){
-    echo "Please enter a model name: ";
+function getUserInput($question){
+    echo $question;
     $input = fgets(STDIN, 1024);
     return rtrim($input);
 }

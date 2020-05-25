@@ -8,16 +8,23 @@ class CreateCrud extends Database {
 
     public function __construct($crudName) {
         parent::__construct();
-        if ($this->isAlreadyExist($crudName))
-            throw new Error("Model already exist");
+        if ($this->isAlreadyExist($crudName)) {
+            $wantContinue = getUserInput("This SQL table already exist, continue ? (y/n)");
+            if (strtolower($wantContinue) !== "y")
+                throw new Error("Model already exist");
+            else
+                echo "Please make sure you have createdAt and UpdatedAt timestamp column in your database.\n";
+        }
         $this->_name = $crudName;
         $this->_sname = substr($crudName, 0, strlen($crudName) - 1);
         // add new table in BDD
         $this->createTable();
         // creating Model dir
-        mkdir('src/Domain/'.ucfirst($this->_sname));
+        if (!@mkdir('src/Domain/'.ucfirst($this->_sname)))
+            throw new Error("You already have a directory: " . 'src/Domain/' . ucfirst($this->_sname));
         // Creating Controller dir
-        mkdir('src/Application/Actions/'.ucfirst($this->_sname));
+        if (!@mkdir('src/Application/Actions/' . ucfirst($this->_sname)))
+            throw new Error("You already have a directory: " . 'src/Application/Actions/' . ucfirst($this->_sname));
         $ucrudName = ucfirst($this->_sname);
         $schemasAssoc = [
             'ModelName'         => 'src/Domain/' . $ucrudName . '/' . $ucrudName . '.php',
