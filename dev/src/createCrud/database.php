@@ -8,7 +8,7 @@ class Database {
             $dbsettings = require("dev/dbsettings.php");
             $this->_instance = new PDO($dbsettings['driver'] . ':host=' . $dbsettings['host'] . ';dbname=' . $dbsettings['database'] . ';charset=' . $dbsettings["charset"], $dbsettings['username'], $dbsettings['password'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+            throw new Error($e->getMessage());
         }
     }
 
