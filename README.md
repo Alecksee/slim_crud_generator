@@ -1,12 +1,47 @@
 # slim_crud_generator
-Create full CRUD API schema for SLIM with Eloquent
 
-# Init
-Copy dev folder into your Slim skeleton project.
+CLI tool for PHP Slim Framework.
 
-Adapt dev/dbsettings.php with your configuration.
+
+# Prerequisites
+Having a Slim Framework project connected with Eloquent ORM. 
+
+@see 
+ - documentation from Slim Framework v3: [Using Eloquent with Slim (en)](https://www.slimframework.com/docs/v3/cookbook/database-eloquent.html)
+ - my article from my personnal blog: [Créez une API avec Slim 4 et Eloquent (fr)](https://alexisallais.fr/creez_une_api_avec_slim_4_et_eloquent/) 
+
 
 # How to use
-Simply run `php dev/create_crud.php` from your root slim directory.
+Clone the project on your machine.
+> `git clone git@github.com:Alecksee/slim_crud_generator.git`
 
-This program will create SQL table and generate all CRUD routes for you new model.
+Enter in the cloned directory
+> `cd slim_crud_generator`
+
+Execute the main php file with 2 parameters:
+
+1. the command name
+2. /path/to/your/slim/project
+
+Example:
+> `php slim_generator.php crud/create /path/to/your/slim/project`
+
+## Available commands:
+
+### crud/create
+- create table into your database
+- generate model linked with the created table
+- generate routes and basics controllers.
+
+> Example with Animals table
+>
+>Method | Route
+>---:|:---
+>GET | /aminal/all
+>POST| /animal
+>GET | /animal/{id}
+>PUT | /animal/{id}
+>DELETE | /animal/{id}
+
+#### Notes
+v2

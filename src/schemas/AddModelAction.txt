@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\{{slim_generator_model_name}};
+
+use Psr\Http\Message\ResponseInterface as Response;
+use App\Domain\{{slim_generator_model_name}}\{{slim_generator_model_name}};
+
+class Add{{slim_generator_model_name}}Action extends {{slim_generator_model_name}}Action
+{
+    protected function action(): Response
+    {
+        $data = $this->request->getParsedBody();
+        ${{slim_generator_lower_model_name}} = new {{slim_generator_model_name}};
+        %s
+        ${{slim_generator_lower_model_name}}->save();
+        return $this->respondWithData(${{slim_generator_lower_model_name}});
+    }
+}

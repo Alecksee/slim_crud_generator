@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\{{slim_generator_model_name}};
+
+use App\Application\Actions\Action;
+use App\Domain\{{slim_generator_model_name}}\{{slim_generator_model_name}};
+use Psr\Log\LoggerInterface;
+
+abstract class {{slim_generator_model_name}}Action extends Action
+{
+    /**
+    * @var {{slim_generator_model_name}}
+    */
+    protected ${{slim_generator_lower_model_name}};
+    
+    /**
+    * @param LoggerInterface $logger
+    * @param {{slim_generator_model_name}}  ${{slim_generator_lower_model_name}}
+    */
+    public function __construct(LoggerInterface $logger, {{slim_generator_model_name}} ${{slim_generator_lower_model_name}})
+    {
+        parent::__construct($logger);
+        $this->{{slim_generator_lower_model_name}} = ${{slim_generator_lower_model_name}};
+    }
+    
+    protected function parseBody() {
+        // parsing from key=value&key2=value2 to [key => value, key2 => value2]
+        $data;
+        $raw = $this->request->getBody()->getContents();
+        if (empty($raw))
+            return $this->request->getParsedBody();
+        $cutted = explode("&", $raw);
+        foreach ($cutted as $param) {
+            list($key, $value) = explode("=", $param);
+            $data[$key] = $value;
+        }
+        return $data;
+    }
+}

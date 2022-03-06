@@ -1,0 +1,8 @@
+
+    $app->group('/{{slim_generator_lower_model_name}}', function (Group $group) {
+        $group->get('/all', \App\Application\Actions\{{slim_generator_model_name}}\List{{slim_generator_model_name_plural}}Action::class);
+        $group->post('', \App\Application\Actions\{{slim_generator_model_name}}\Add{{slim_generator_model_name}}Action::class);
+        $group->get('/{id}', \App\Application\Actions\{{slim_generator_model_name}}\Get{{slim_generator_model_name}}Action::class);
+        $group->put('/{id}', \App\Application\Actions\{{slim_generator_model_name}}\Update{{slim_generator_model_name}}Action::class);
+        $group->delete('/{id}', \App\Application\Actions\{{slim_generator_model_name}}\Delete{{slim_generator_model_name}}Action::class);
+    });

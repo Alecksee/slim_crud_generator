@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\{{slim_generator_model_name}};
+
+use Psr\Http\Message\ResponseInterface as Response;
+
+class Delete{{slim_generator_model_name}}Action extends {{slim_generator_model_name}}Action
+{
+    protected function action(): Response
+    {
+        ${{slim_generator_lower_model_name}}Id = (int) $this->resolveArg('id');
+        ${{slim_generator_lower_model_name}} = $this->{{slim_generator_lower_model_name}}->destroy(${{slim_generator_lower_model_name}}Id);
+        return $this->respondWithData(${{slim_generator_lower_model_name}});
+    }
+}    
