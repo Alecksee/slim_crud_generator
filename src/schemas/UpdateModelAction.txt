@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\{{slim_generator_model_name}};
+
+use Psr\Http\Message\ResponseInterface as Response;
+use App\Domain\{{slim_generator_model_name}}\{{slim_generator_model_name}};
+
+class Update{{slim_generator_model_name}}Action extends {{slim_generator_model_name}}Action
+{
+    protected function action(): Response
+    {
+        $data = $this->parseBody();
+        ${{slim_generator_lower_model_name}}Id = (int) $this->resolveArg('id');
+        ${{slim_generator_lower_model_name}} = $this->{{slim_generator_lower_model_name}}->find(${{slim_generator_lower_model_name}}Id);
+        foreach($data as $key => $value) {
+            if (isset(${{slim_generator_lower_model_name}}->$key))
+                ${{slim_generator_lower_model_name}}->$key = $value;
+        }
+        ${{slim_generator_lower_model_name}}->save();
+        return $this->respondWithData(${{slim_generator_lower_model_name}});
+    }
+}

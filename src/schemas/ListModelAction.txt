@@ -1,0 +1,16 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Actions\{{slim_generator_model_name}};
+
+use Psr\Http\Message\ResponseInterface as Response;
+
+class List{{slim_generator_model_name_plural}}Action extends {{slim_generator_model_name}}Action
+{
+    protected function action(): Response
+    {
+        $all{{slim_generator_model_name_plural}} = $this->{{slim_generator_lower_model_name}}->all();
+        return $this->respondWithData($all{{slim_generator_model_name_plural}});
+    }
+}
