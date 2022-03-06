@@ -1,6 +1,0 @@
-<?php
-
-namespace App\Domain\MODELNAME;
-
-class MODELNAME extends \Illuminate\Database\Eloquent\Model {
-}
